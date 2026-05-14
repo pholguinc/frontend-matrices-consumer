@@ -9,8 +9,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_GO_API_URL=http://localhost:3030
-      - NEXT_PUBLIC_NODE_API_URL=http://localhost:3050
+      - NODE_ENV=production
+      - NEXT_PUBLIC_GO_API_URL=${NEXT_PUBLIC_GO_API_URL}
+      - NEXT_PUBLIC_NODE_API_URL=${NEXT_PUBLIC_NODE_API_URL}
     restart: always
 
 networks:
