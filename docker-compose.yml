@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: matrix-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_GO_API_URL=http://localhost:3030
+      - NEXT_PUBLIC_NODE_API_URL=http://localhost:3050
+    restart: always
+
+networks:
+  default:
+    name: matrix-network
+    external: true

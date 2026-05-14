@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: matrix-frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NEXT_PUBLIC_GO_API_URL=http://localhost:3030
+      - NEXT_PUBLIC_NODE_API_URL=http://localhost:3050
+    # Add this to handle Next.js dev server with Docker
+    stdin_open: true
+    tty: true
